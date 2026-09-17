@@ -19,6 +19,10 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
     st.success(f"'{uploaded_file.name}' has been succesfully uploaded!")
     st.dataframe(data) # print the uploaded dataframe
 
+
+    # LUCE?
+
+
     data["start time"] = pd.to_datetime(data["start time"]) # convert the departure times into datetimes
     data["end time"] = pd.to_datetime(data["end time"]) # convert the arrival times into datetimes
 
