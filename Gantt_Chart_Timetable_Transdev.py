@@ -32,7 +32,7 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
     timetable["start time"] = pd.to_datetime(timetable["start time"]) # convert the departure times into datetimes
     timetable["end time"] = pd.to_datetime(timetable["end time"]) # convert the arrival times into datetimes
 
-    bus_nummers = sorted(timetable["bus"].unique())
+    bus_numbers = sorted(timetable["bus"].unique()) # Edit the bus numbers variables to seperate the values when you plot them on the y axis of the gantt chart
 
     # Plot Gantt chart planning
     gantt = px.timeline(
@@ -71,8 +71,8 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
         gridcolor="#f3f3f3",
         gridwidth=1,
         tickmode='array',
-        tickvals=bus_nummers, # to help seperate the bus numbers on the y axis values
-        ticktext=[str(b) for b in bus_nummers],  # how the numbers will be printed
+        tickvals=bus_numbers, # to help seperate the bus numbers on the y axis values
+        ticktext=[str(b) for b in bus_numbers],  # how the numbers will be printed
         autorange="reversed" # start with bus number 1 on the top
     )
     )
