@@ -14,29 +14,24 @@ uploaded_file = st.file_uploader( # upload button
 )
 
 if uploaded_file is not None: # you cannot run this unless a file has been uploaded
-    timetable = pd.read_excel(uploaded_file) # turn the uploaded file into a pandas dataframe
+    data = pd.read_excel(uploaded_file) # turn the uploaded file into a pandas dataframe
 
     st.success(f"'{uploaded_file.name}' has been succesfully uploaded!")
-    st.dataframe(timetable) # print the uploaded dataframe
-
-    # timetable = pd.read_excel(r"C:\Users\Merel\OneDrive\Documenten\AA Fontys Toegepaste Wiskunde\Jaar 2\Periode 5\PJ5\Bus Planning.xlsx")
-
-    # st.subheader("Timetable data") # a subheader for the dataframe
-    # st.dataframe(timetable) # print the dataframe underneath the header
+    st.dataframe(data) # print the uploaded dataframe
 
     # Vereiste kolommen? Met check?
     # Busnummer
     # Start 
     # Einde
 
-    timetable["start time"] = pd.to_datetime(timetable["start time"]) # convert the departure times into datetimes
-    timetable["end time"] = pd.to_datetime(timetable["end time"]) # convert the arrival times into datetimes
+    data["start time"] = pd.to_datetime(data["start time"]) # convert the departure times into datetimes
+    data["end time"] = pd.to_datetime(data["end time"]) # convert the arrival times into datetimes
 
-    bus_numbers = sorted(timetable["bus"].unique()) # Edit the bus numbers variables to seperate the values when you plot them on the y axis of the gantt chart
+    bus_numbers = sorted(data["bus"].unique()) # Edit the bus numbers variables to seperate the values when you plot them on the y axis of the gantt chart
 
     # Plot Gantt chart planning
     gantt = px.timeline(
-        timetable, # data used for Gantt chart planning
+        data, # data used for Gantt chart planning
         x_start="start time", # starting value of the x axis
         x_end="end time", # x axis value limit
         y="bus", # y axis values -> bus numbers
