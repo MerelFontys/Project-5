@@ -160,8 +160,8 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
     df_busplanning_copy.loc[idle_rows, 'energy consumption'] = berekende_energie
 
 
-    data["start time"] = pd.to_datetime(data["start time"]) # convert the departure times into datetimes
-    data["end time"] = pd.to_datetime(data["end time"]) # convert the arrival times into datetimes
+    data["start time"] = pd.to_datetime(data["start time"], format='%H:%M:%S') # convert the departure times into datetimes
+    data["end time"] = pd.to_datetime(data["end time"], format='%H:%M:%S') # convert the arrival times into datetimes
 
     bus_numbers = sorted(data["bus"].unique()) # Edit the bus numbers variables to seperate the values when you plot them on the y axis of the gantt chart
 
