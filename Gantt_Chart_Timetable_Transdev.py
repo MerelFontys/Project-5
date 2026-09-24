@@ -194,6 +194,10 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         st.dataframe(data)  # show the raw, uploaded dataframe
 
                 # --- Gantt chart, built on the checked and cleaned data ---
+
+        # Parameter options
+        
+
         bus_numbers = sorted(df_busplanning_copy["bus"].unique())
 
         # pre-formatted hour:minute strings, used for the hover text (independent of the axis tickformat)
