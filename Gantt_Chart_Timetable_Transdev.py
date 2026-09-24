@@ -171,6 +171,7 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
         x_start="start time", # starting value of the x axis
         x_end="end time", # x axis value limit
         y="bus", # y axis values -> bus numbers
+
         color="activity", # Gantt chart colored based on busactivity
         color_discrete_sequence=px.colors.qualitative.Plotly, # color palette
         title="Planning per bus number - Line 400 & line 401" # Title of Gantt chart
@@ -215,3 +216,20 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
     gantt.update_yaxes(autorange="reversed")
 
     st.plotly_chart(gantt, use_container_width=True) # Show Gantt chart
+
+    # Pie chart with the ratios of the bus activity
+    piechart_sort_trip = px.pie(data, names="activity", title="Ratio bus activities", color_discrete_sequence=px.colors.qualitative.Plotly)
+    
+    piechart_sort_trip.update_layout(
+        title_x=0.5,
+        legend_title_text="<b>Different kind of trips</b>"
+        )
+    piechart_sort_trip.update_traces(
+        textposition="inside",
+        textfont=dict(color="white") # put the text in the pie parts with a white color
+    )
+
+    col_left, col_mid, col_right = st.columns([1, 2, 1])
+    with col_mid:
+        st.plotly_chart(piechart_sort_trip, use_container_width=True)
+    
