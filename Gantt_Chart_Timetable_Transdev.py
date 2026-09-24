@@ -222,8 +222,8 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
     
     piechart_sort_trip.update_layout(
         title_x=0.5,
-        legend_title_text="<b>Different kind of trips</b>"
-        )
+        legend_title_text="<b>Different kind of trips</b>" # gives the pie chart a centered title
+    )
     piechart_sort_trip.update_traces(
         textposition="inside",
         textfont=dict(color="white") # put the text in the pie parts with a white color
@@ -231,5 +231,5 @@ if uploaded_file is not None: # you cannot run this unless a file has been uploa
 
     col_left, col_mid, col_right = st.columns([1, 2, 1])
     with col_mid:
-        st.plotly_chart(piechart_sort_trip, use_container_width=True)
+        st.plotly_chart(piechart_sort_trip, use_container_width=True) # center the pie chart
     
