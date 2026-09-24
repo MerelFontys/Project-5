@@ -1,10 +1,36 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import base64
+from pathlib import Path
+
 
 # Make webpage
 st.set_page_config(page_title="Busplan", layout="wide")  # default settings of the webpage
-st.title("Busplan Transdev")  # title of the webpage
+
+# Find the logo
+logo_path = Path(__file__).parent / "transdev_logo.png"
+
+# Read and encode the logo
+with open(logo_path, "rb") as f:
+    logo_base64 = base64.b64encode(f.read()).decode()
+
+col1, col2, col3 = st.columns([1, 2, 1])
+
+with col2:
+    st.markdown(
+        f"""
+        <div style='text-align: center;'>
+            <img src='data:image/png;base64,{logo_base64}' width='150'>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.markdown(
+    "<h1 style='color: #FF0000; text-align: center;'>Busplan Transdev</h1>",
+    unsafe_allow_html=True
+) # title of the webpage
 
 # --- Fixed values used by the checks ---
 required_columns = ['start location', 'end location', 'start time', 'end time', 'activity', 'line', 'energy consumption', 'bus']
