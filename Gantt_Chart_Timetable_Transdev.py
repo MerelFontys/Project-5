@@ -224,8 +224,29 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         col1, col2, col3 = st.columns([1, 2, 1]) # Minimum charging time (min)
         options = np.arange(5, 60, 5)
         with col2:
-            charge_time_parameter = st.select_slider("Minimum charging time (min)", 
+            min_charge_time = st.select_slider("Minimum charging time (min)", 
                 options, 15, help="Choose the minimum amount of time, in minutes, that the bus has to charge")
+
+        def check_charge_parameter(df, min_charge_time):
+            charging = df[df['activity'] == 'charging']
+            duration = (charging['end time'] - charging['start time']).dt.total_seconds() / 60
+            for index in duration[duration < min_charge_time].index:
+                st.write(f"Row {index}: charging lasts {duration[index]:.0f} min (minimum is {min_charge_time} min)")
+            return # DIT KLOPT NOG NIEETTTT IETS AAN DOEN!!!!!!!!
+        '''
+        X
+        X
+        X
+        X
+        X
+        X
+        X
+        X
+        X
+        X
+        '''
+
+        check_charge_parameter(df_busplanning_copy, min_charge_time)   
 
         col1, col2, col3 = st.columns([1, 2, 1]) # Charging rate / power
         with col2:
