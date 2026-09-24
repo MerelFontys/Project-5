@@ -1,0 +1,8 @@
+[theme]
+base="light"
+primaryColor="#EDE8DD"
+backgroundColor = "#f6d8ca"
+
+[theme.sidebar]
+primaryColor="#f53e3e"
+backgroundColor = "#EDE8DD"
