@@ -11,7 +11,6 @@ st.set_page_config(page_title="Busplan", layout="wide")  # default settings of t
 # Find the logo
 logo_path = Path(__file__).parent / "transdev_logo.png"
 
-# Read and encode the logo
 with open(logo_path, "rb") as f:
     logo_base64 = base64.b64encode(f.read()).decode()
 
