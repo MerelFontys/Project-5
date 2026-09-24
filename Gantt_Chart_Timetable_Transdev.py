@@ -213,6 +213,8 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
 
 
         # Parameter options
+        st.subheader("Set parameter values")
+
         col1, col2, col3 = st.columns([1, 2, 1]) # Min and max % SOH-battery
         with col2:
             soh_parameter = st.slider("Minimum & maximum percentage(%) State Of Health", 
@@ -229,15 +231,11 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         with col2:
             charging_power = st.number_input(
                 "Charging rate / power (kW/h)", 
-                min_value=50, max_value=600, step=5
+                min_value=50, max_value=600, step=5, value=450
             )
 
 
         # --- Gantt chart, built on the checked and cleaned data ---
-
-        # Parameter options
-        min_soh = st.slider("Minimum percentage(%) State Of Health at all times", 5, 95, 10)
-
         bus_numbers = sorted(df_busplanning_copy["bus"].unique())
 
         # pre-formatted hour:minute strings, used for the hover text (independent of the axis tickformat)
