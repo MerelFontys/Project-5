@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import base64
 from pathlib import Path
+import numpy as np
 
 
 # Make webpage
@@ -209,6 +210,28 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         display_df['start time'] = display_df['start time'].dt.strftime('%H:%M:%S')
         display_df['end time'] = display_df['end time'].dt.strftime('%H:%M:%S')
         st.dataframe(display_df)  # show the data with time-only columns (no 1900-01-01 date prefix)
+
+
+        # Parameter options
+        col1, col2, col3 = st.columns([1, 2, 1]) # Min and max % SOH-battery
+        with col2:
+            soh_parameter = st.slider("Minimum & maximum percentage(%) State Of Health", 
+                min_value=5, max_value=95, value=(10,90), step=5, 
+                help="Choose the minimum and maximum percentage that the battery of the bus must have at all times")
+
+        col1, col2, col3 = st.columns([1, 2, 1]) # Minimum charging time (min)
+        options = np.arange(5, 60, 5)
+        with col2:
+            charge_time_parameter = st.select_slider("Minimum charging time (min)", 
+                options, 15, help="Choose the minimum amount of time, in minutes, that the bus has to charge")
+
+        col1, col2, col3 = st.columns([1, 2, 1]) # Charging rate / power
+        with col2:
+            charging_power = st.number_input(
+                "Charging rate / power (kW/h)", 
+                min_value=50, max_value=600, step=5
+            )
+
 
         # --- Gantt chart, built on the checked and cleaned data ---
 
