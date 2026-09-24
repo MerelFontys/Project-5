@@ -210,6 +210,13 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
             charge_time_parameter = st.select_slider("Minimum charging time (min)", 
                 options, 15, help="Choose the minimum amount of time, in minutes, that the bus has to charge")
 
+        col1, col2, col3 = st.columns([1, 2, 1]) # Charging rate / power
+        with col2:
+            charging_power = st.number_input(
+                "Charging rate / power (kW/h)", 
+                min_value=50, max_value=600, step=5
+            )
+
         bus_numbers = sorted(df_busplanning_copy["bus"].unique())
 
         # pre-formatted hour:minute strings, used for the hover text (independent of the axis tickformat)
