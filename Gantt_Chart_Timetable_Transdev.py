@@ -246,6 +246,7 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         st.dataframe(data)  # show the raw, uploaded dataframe, so the user can inspect what went wrong
 
      # Pie chart with the ratios of the bus activity
+    st.subheader("KPI GERELATEERD --> DUS KPI OF LETTERLIJK PIE CHART RATIOS?")
     piechart_sort_trip = px.pie(data, names="activity", title="Ratio bus activities", color_discrete_sequence=px.colors.qualitative.Plotly)
     
     piechart_sort_trip.update_layout(
