@@ -2,18 +2,28 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import base64
+from pathlib import Path
+
 
 # Make webpage
 st.set_page_config(page_title="Busplan", layout="wide")  # default settings of the webpage
 
+# Find the logo
+logo_path = Path(__file__).parent / "transdev_logo.png"
+
+# Read and encode the logo
+with open(logo_path, "rb") as f:
+    logo_base64 = base64.b64encode(f.read()).decode()
+
 col1, col2, col3 = st.columns([1, 2, 1])
+
 with col2:
     st.markdown(
-        """
+        f"""
         <div style='text-align: center;'>
-            <img src='data:image/png;base64,{}' width='150'>
+            <img src='data:image/png;base64,{logo_base64}' width='150'>
         </div>
-        """.format(base64.b64encode(open("transdevlogo.png", "rb").read()).decode()),
+        """,
         unsafe_allow_html=True
     )
 
