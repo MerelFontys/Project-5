@@ -159,7 +159,6 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
     # Gantt chart uses df_busplanning_copy - the checked, time-converted, midnight-corrected version
     bus_numbers = sorted(df_busplanning_copy["bus"].unique())  # Edit the bus numbers variables to seperate the values when you plot them on the y axis of the gantt chart
 
-<<<<<<< Updated upstream
     data["start time"] = pd.to_datetime(data["start time"], format='%H:%M:%S') # convert the departure times into datetimes
     data["end time"] = pd.to_datetime(data["end time"], format='%H:%M:%S') # convert the arrival times into datetimes
 
@@ -174,8 +173,8 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
 
         color="activity", # Gantt chart colored based on busactivity
         color_discrete_sequence=px.colors.qualitative.Plotly, # color palette
-        title="Planning per bus number - Line 400 & line 401" # Title of Gantt chart
-=======
+        title="Planning per bus number - Line 400 & line 401") # Title of Gantt chart
+        
     st.subheader("Gantt chart")
 
     # Plot Gantt chart planning
@@ -187,7 +186,6 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
         color="activity",  # Gantt chart colored based on busactivity
         color_discrete_sequence=px.colors.qualitative.Plotly,  # color palette
         title="Planning per bus number - Line 400 & line 401"  # Title of Gantt chart
->>>>>>> Stashed changes
     )
     # Further lay-out of the Gantt chart
     gantt.update_layout(
@@ -228,7 +226,6 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
     # Put the bus numbers reversed on de y axis so that you start on the top with the first bus
     gantt.update_yaxes(autorange="reversed")
 
-<<<<<<< Updated upstream
     st.plotly_chart(gantt, use_container_width=True) # Show Gantt chart
 
     # Pie chart with the ratios of the bus activity
