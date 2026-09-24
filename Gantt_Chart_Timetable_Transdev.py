@@ -147,7 +147,7 @@ uploaded_file = st.file_uploader(  # upload button
 if uploaded_file is not None:  # you cannot run this unless a file has been uploaded
     data = pd.read_excel(uploaded_file)  # turn the uploaded file into a pandas dataframe
 
-    st.success(f"'{uploaded_file.name}' has been succesfully uploaded!")
+    st.success(f"'{uploaded_file.name}' has been succesfully uploaded! Please verify the data quality results below.")
 
     # make a copy right at the start - everything from here on works on this copy
     df_busplanning_copy = data.copy()
@@ -424,7 +424,6 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
     st.plotly_chart(gantt, use_container_width=True) # Show Gantt chart
 
     # Pie chart with the ratios of the bus activity
->>>>>>> Stashed changes
     piechart_sort_trip = px.pie(data, names="activity", title="Ratio bus activities", color_discrete_sequence=px.colors.qualitative.Plotly)
     
     piechart_sort_trip.update_layout(
@@ -439,7 +438,6 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
     col_left, col_mid, col_right = st.columns([1, 2, 1])
     with col_mid:
         st.plotly_chart(piechart_sort_trip, use_container_width=True) # center the pie chart
-<<<<<<< Updated upstream
 
     
         # #Filters in de sidebar (DEZE WERKEN NOG NIET want uiteindelijk moeten we dan alles aanpassen op de gefilterde data
@@ -456,7 +454,4 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
 
         # # Uiteindelijke filtering
         # data_filtered = filtered_by_line[filtered_by_line["bus"].isin(selected_buses)]
-=======
-    
 
->>>>>>> Stashed changes
