@@ -296,3 +296,19 @@ if uploaded_file is not None:  # you cannot run this unless a file has been uplo
     col_left, col_mid, col_right = st.columns([1, 2, 1])
     with col_mid:
         st.plotly_chart(piechart_sort_trip, use_container_width=True) # center the pie chart
+
+    
+        # #Filters in de sidebar (DEZE WERKEN NOG NIET want uiteindelijk moeten we dan alles aanpassen op de gefilterde data
+        # st.sidebar.header("Filters")
+
+        # # Filter op lijn (400/401)
+        # lines = sorted(data["line"].unique())
+        # selected_lines = st.sidebar.multiselect("Lijn", options=lines, default=lines)
+
+        # # Filter op busnummer
+        # filtered_by_line = data[data["line"].isin(selected_lines)]
+        # buses = sorted(filtered_by_line["bus"].unique())
+        # selected_buses = st.sidebar.multiselect("Busnummer", options=buses, default=buses)
+
+        # # Uiteindelijke filtering
+        # data_filtered = filtered_by_line[filtered_by_line["bus"].isin(selected_buses)]
